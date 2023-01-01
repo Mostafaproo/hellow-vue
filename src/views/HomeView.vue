@@ -1,18 +1,27 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="sdfsdf" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { ref } from '@vue/composition-api'
+import { defineAsyncComponent } from '@vue/composition-api'
+ 
 export default {
-  name: 'HomeView',
   components: {
-    HelloWorld
-  }
+    HelloWorld: defineAsyncComponent(() =>
+      import('../components/HelloWorld.vue')
+    )
+  },
+  setup() {
+
+    const name = ref('name form setup functions')
+
+    return { name }
+  },
 }
 </script>
+
+
